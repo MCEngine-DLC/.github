@@ -4,7 +4,42 @@ This is an example DLC module for the `MCEngineArtificialIntelligence` plugin. I
 
 ## 📦 Dependency Setup
 
+To access GitHub Packages, you need to create a `.env` file in the root of your project and generate a personal access token with proper permissions.
+
+```env
+GIT_USER_NAME={your name}
+GIT_USER_TOKEN={your token}
+```
+
+**Note:**
+- Your token must have the `read:packages` permission enabled.
+- Public GitHub packages can be accessed using a token, even if the user is not part of the organization or repository.
+
 Add the `mcengine-artificialintelligence-api` to your project:
+
+### ➤ Maven Repository
+```xml
+<repositories>
+    <repository>
+        <id>github</id>
+        <url>https://maven.pkg.github.com/MCEngine/artificialintelligence</url>
+        <releases>
+            <enabled>true</enabled>
+        </releases>
+        <snapshots>
+            <enabled>true</enabled>
+        </snapshots>
+    </repository>
+</repositories>
+
+<servers>
+    <server>
+        <id>github</id>
+        <username>${env.GIT_USER_NAME}</username>
+        <password>${env.GIT_USER_TOKEN}</password>
+    </server>
+</servers>
+```
 
 ### ➤ Maven
 ```xml
@@ -13,6 +48,19 @@ Add the `mcengine-artificialintelligence-api` to your project:
   <artifactId>mcengine-artificialintelligence-api</artifactId>
   <version>{version}</version>
 </dependency>
+```
+
+### ➤ Gradle Repository
+```groovy
+repositories {
+    maven {
+        url = uri('https://maven.pkg.github.com/MCEngine/artificialintelligence')
+        credentials {
+            username = System.getenv('GIT_USER_NAME') ?: 'null'
+            password = System.getenv('GIT_USER_TOKEN') ?: 'null'
+        }
+    }
+}
 ```
 
 ### ➤ Gradle (long form)
