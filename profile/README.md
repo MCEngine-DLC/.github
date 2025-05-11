@@ -68,7 +68,7 @@ public class ExampleDLC implements IMCEngineArtificialIntelligenceDLC {
 
 ## 📁 Packaging
 
-Make sure your JAR file includes the `ExampleDLC` class and any required dependencies. Place the JAR in the `plugins/MCEngineArtificialIntelligence/dlc/` folder.
+Make sure your JAR file includes the `ExampleDLC` class and any required dependencies. Place the JAR in the `plugins/MCEngineArtificialIntelligence/dlcs/` folder.
 
 ---
 
