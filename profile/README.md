@@ -4,7 +4,7 @@ This is an example DLC module for the `MCEngineArtificialIntelligence` plugin. I
 
 ## 📦 Dependency Setup
 
-To access GitHub Packages, you need to create a `.env` file in the root of your project and generate a personal access token with proper permissions.
+To access GitHub Packages, you need to create two environments for authentication in your GitHub project and generate a personal access token with the appropriate permissions.
 
 ```env
 GIT_USER_NAME={your name}
