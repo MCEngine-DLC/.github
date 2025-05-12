@@ -125,3 +125,21 @@ Make sure your JAR file includes the `ExampleDLC` class and any required depende
 The core MCEngine plugin will detect and load this DLC automatically if it implements the interface `IMCEngine{project name}DLC`.
 
 ---
+
+<div align="center">
+
+<h3><b>📦 Available Project</b></h3>
+
+<a href="https://github.com/MCEngine-DLC/example"><code>Example</code></a>
+
+<h3><b>📁 Projects</b></h3>
+
+<table>
+  <tr>
+    <td><a href="https://github.com/MCEngine/artificialintelligence"><code>artificialintelligence</code></a></td>
+  </tr>
+</table>
+
+</div>
+
+---
