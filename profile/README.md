@@ -1,6 +1,6 @@
 # ExampleDLC for MCEngine Projects
 
-This is an example DLC module for the `MCEngine{project name}` plugin. It demonstrates how to implement and register a custom DLC using the provided `IMCEngine{project name}DLC` interface.
+This is an example DLC module for the `MCEngine` plugin. It demonstrates how to implement and register a custom DLC using the provided `IMCEngineDLC` interface.
 
 ## 📦 Dependency Setup
 
@@ -15,14 +15,14 @@ GIT_USER_TOKEN={your token}
 - Your token must have the `read:packages` permission enabled.
 - Public GitHub packages can be accessed using a token, even if the user is not part of the organization or repository.
 
-Add the `mcengine-{project name}-api` to your project:
+Add the `mcengine-api` to your project:
 
 ### ➤ Maven Repository
 ```xml
 <repositories>
     <repository>
         <id>github</id>
-        <url>https://maven.pkg.github.com/MCEngine/{project name}</url>
+        <url>https://maven.pkg.github.com/MCEngine/mcengine</url>
         <releases>
             <enabled>true</enabled>
         </releases>
@@ -45,7 +45,7 @@ Add the `mcengine-{project name}-api` to your project:
 ```xml
 <dependency>
   <groupId>io.github.mcengine</groupId>
-  <artifactId>mcengine-{project name}-api</artifactId>
+  <artifactId>mcengine-api</artifactId>
   <version>{version}</version>
 </dependency>
 ```
@@ -54,7 +54,7 @@ Add the `mcengine-{project name}-api` to your project:
 ```groovy
 repositories {
     maven {
-        url = uri('https://maven.pkg.github.com/MCEngine/{project name}')
+        url = uri('https://maven.pkg.github.com/MCEngine/mcengine')
         credentials {
             username = System.getenv('GIT_USER_NAME') ?: 'null'
             password = System.getenv('GIT_USER_TOKEN') ?: 'null'
@@ -66,13 +66,13 @@ repositories {
 ### ➤ Gradle (long form)
 ```groovy
 dependencies {
-    implementation group: 'io.github.mcengine', name: 'mcengine-{project name}-api', version: '{version}'
+    implementation group: 'io.github.mcengine', name: 'mcengine-api', version: '{version}'
 }
 ```
 
 ### ➤ Gradle (short form)
 ```groovy
-implementation 'io.github.mcengine:mcengine-{project name}-api:{version}'
+implementation 'io.github.mcengine:mcengine-api:{version}'
 ```
 
 ---
@@ -82,7 +82,7 @@ implementation 'io.github.mcengine:mcengine-{project name}-api:{version}'
 Your DLC class must implement the following interface:
 
 ```java
-public interface IMCEngine{project name}DLC {
+public interface IMCEngineDLC {
     void onLoad(Plugin plugin);
 }
 ```
@@ -92,17 +92,17 @@ public interface IMCEngine{project name}DLC {
 ```java
 package io.github.mcengine.dlc.example;
 
-import io.github.mcengine.api.{project name}.dlc.IMCEngine{project name}DLC;
-import io.github.mcengine.api.{project name}.dlc.MCEngine{project name}DLCLogger;
+import io.github.mcengine.api.mcengine.dlc.IMCEngineDLC;
+import io.github.mcengine.api.mcengine.dlc.MCEngineDLCLogger;
 import org.bukkit.plugin.Plugin;
 
-public class ExampleDLC implements IMCEngine{project name}DLC {
+public class ExampleDLC implements IMCEngineDLC {
 
-    private MCEngine{project name}DLCLogger logger;
+    private MCEngineDLCLogger logger;
 
     @Override
     public void onLoad(Plugin plugin) {
-        logger = new MCEngine{project name}DLCLogger(plugin, "ExampleDLC");
+        logger = new MCEngineDLCLogger(plugin, "ExampleDLC");
         logger.info("ExampleDLC is loading...");
         
         // Add your DLC-specific logic here
@@ -122,7 +122,7 @@ Make sure your JAR file includes the `ExampleDLC` class and any required depende
 
 ## 🔄 Dynamic Loading
 
-The core MCEngine plugin will detect and load this DLC automatically if it implements the interface `IMCEngine{project name}DLC`.
+The core MCEngine plugin will detect and load this DLC automatically if it implements the interface `IMCEngineDLC`.
 
 ---
 
